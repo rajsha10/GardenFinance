@@ -47,24 +47,37 @@ const DOT_CONFIG_PATH = join(homedir(), ".swapper_config.json");
 let dotConfig = readJsonFileSync(DOT_CONFIG_PATH);
 
 // Command Definitions
-ccreator.command("createevmwallet", "creates a evm wallet", async () => {
+ccreator.command("createevmwallet", "creates an EVM wallet", async () => {
     const { privatekey: privateKey } = ivar;
 
-    if (!privateKey) throw new KeyError();
+    if (!privateKey) {
+        throw new KeyError('Private key is required');
+    }
 
-    const wallet = new Wallet(privateKey, ETHEREUM_PROVIDER);
-    const evmWallet = new EVMWallet(wallet);
+    if (!/^0x[0-9a-fA-F]{64}$/.test(privateKey)) {
+        throw new TypeError('Invalid private key format');
+    }
 
-    const address = await evmWallet.getAddress();
-    const balance = await evmWallet.getProvider().getBalance(address);
+    console.log(`Using private key: ${privateKey}`);
 
-    logAddressAndBalance(address, balance);
+    try {
+        const wallet = new Wallet(privateKey, ETHEREUM_PROVIDER);
+        const evmWallet = new EVMWallet(wallet);
 
-    dotConfig.evmPrivateKey = privateKey;
-    writeFileSync(DOT_CONFIG_PATH, JSON.stringify(dotConfig));
+        const address = await evmWallet.getAddress();
+        const balance = await evmWallet.getProvider().getBalance(address);
 
-    console.info(`Saved to ${DOT_CONFIG_PATH}`);
+        logAddressAndBalance(address, balance);
+
+        dotConfig.evmPrivateKey = privateKey;
+        writeFileSync(DOT_CONFIG_PATH, JSON.stringify(dotConfig));
+
+        console.info(`Saved to ${DOT_CONFIG_PATH}`);
+    } catch (error) {
+        console.error('Error creating wallet:', error);
+    }
 });
+
 
 ccreator.command(
     "createbitcoinwallet",
