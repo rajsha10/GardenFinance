@@ -78,7 +78,7 @@ ccreator.command("createevmwallet", "creates an EVM wallet", async () => {
     }
 });
 
-
+//function creating Bitcoin Wallet
 ccreator.command(
     "createbitcoinwallet",
     "creates a bitcoin wallet",

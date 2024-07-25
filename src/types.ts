@@ -3,6 +3,7 @@ export type DotConfig = {
     bitcoinPrivateKey?: string;
 }
 
+//storing private key
 export type Argv = {
     privatekey?: string,
     amount?: number

@@ -8,7 +8,7 @@ class KeyError extends Error {
 class WalletError extends Error {
     constructor(message = "Wallets have not been initialised") {
         super(message);
-        this.name = "WalletError";
+        this.name = "Error In Wallet";
     }
 }
 

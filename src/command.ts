@@ -1,6 +1,5 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-
 import { type Argv } from "./types.ts";
 
 const ivar = yargs(hideBin(process.argv)).argv as Argv;

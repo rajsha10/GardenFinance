@@ -1,18 +1,7 @@
-# Demo CLI
-This is an example on building a command-line interface tool using the [Garden SDK](https://docs.garden.finance/developers/sdk/). This tool lets you swap between WBTC (Wrapped Bitcoin) and BTC (Bitcoin) directly from your terminal. For a step-by-step guide on how this CLI was built, refer to [cookbook/demo-cli](https://docs.garden.finance/cookbook/demo-cli).
-
-> [!NOTE] 
-> This example is meant to help you get started with the Garden SDK. It is not a complete or optimized tool and does not follow all best practices.
-
+BTC to WBTC Swapper
 ## Getting Started
 
 1. Clone the repository.
-
-```bash
-git clone https://github.com/gardenfi/demo-cli
-cd demo-cli
-```
-
 2. Install the required dependencies.
 
 ```bash
