@@ -137,7 +137,7 @@ async function swap(fromAsset: Asset, toAsset: Asset, amount: number) {
 
     let prevAction = null;
     while (true) {
-        await sleep(500); // Time for `subscribeOrders` to update the state of orders
+        await sleep(500);
         if (!order) continue;
         const action = parseStatus(order);
         if (

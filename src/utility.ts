@@ -20,7 +20,6 @@ function createDotConfig(dotConfigPath: string) {
     console.info(`${dotConfigPath} created!`);
 }
 
-//getting EM Wallet Address
 function getEVMWallet(
     evmPrivateKey: string,
     ethereumProvider: JsonRpcProvider
